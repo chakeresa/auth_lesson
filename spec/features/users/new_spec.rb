@@ -9,9 +9,9 @@ RSpec.describe "As a visitor", type: :feature do
 
       visit new_user_path
 
-      fill_in :name, with name
-      fill_in :email, with email
-      fill_in :password, with password
+      fill_in :user_name, with: name
+      fill_in :user_email, with: email
+      fill_in :user_password, with: password
       click_button "Create User"
 
       new_user = User.last
@@ -19,6 +19,9 @@ RSpec.describe "As a visitor", type: :feature do
       expect(current_path).to eq(users_path)
       expect(page).to have_content(name)
       expect(page).to have_content(email)
+      expect(new_user.name).to eq(name)
+      expect(new_user.email).to eq(email)
+      expect(new_user.password).to eq(password)
     end
   end
 end
