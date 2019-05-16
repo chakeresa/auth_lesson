@@ -18,5 +18,22 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_content("Welcome #{name}, you are logged in!")
       expect(page).to_not have_link("Log In")
     end
+
+    it "shows a message when incorrect email and password combo" do
+      name = "user 1"
+      email = "example@example.com"
+      password = "pw123"
+      user = User.create!(name: name, email: email, password: password)
+
+      visit "/login"
+
+      fill_in :email, with: email
+      fill_in :password, with: "wrong"
+      click_button "Log Me In!"
+
+      expect(current_path).to eq(users_path)
+      expect(page).to have_content("Login failed")
+      expect(page).to have_link("Log In")
+    end
   end
 end
