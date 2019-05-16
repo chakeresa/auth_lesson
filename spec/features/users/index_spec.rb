@@ -25,5 +25,12 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(current_path).to eq(new_user_path)
     end
+
+    it "has link to log in" do
+      visit users_path
+      click_link "Log In"
+
+      expect(current_path).to eq("/login")
+    end
   end
 end
