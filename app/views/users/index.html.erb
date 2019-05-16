@@ -1,1 +1,7 @@
 <%= link_to "Register as User", new_user_path %>
+<% @users.each do |user| %>
+  <div id="user-<%= user.id %>">
+    <h3><%= user.name %></h3>
+    <p><%= user.email %></p>
+  </div>
+<% end %>
