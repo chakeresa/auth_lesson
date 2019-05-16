@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     if user = User.authenticate(params[:email], params[:password])
+      session[:current_user_email] = params[:email]
       flash[:notice] = "Welcome #{user.name}, you are logged in!"
     else
       flash[:notice] = "Login failed"
