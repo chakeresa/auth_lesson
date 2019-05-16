@@ -10,8 +10,8 @@ RSpec.describe "As a visitor", type: :feature do
 
       visit "/login"
 
-      fill_in :session_email, with: email
-      fill_in :session_password, with: password
+      fill_in :email, with: email
+      fill_in :password, with: password
       click_button "Log Me In!"
 
       expect(current_path).to eq(users_path)
