@@ -3,7 +3,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   def self.authenticate(email, password)
-    # if email and password correspond to a valid user, return that user
-    # otherwise, return nil
+    find_by(email: email, password: password)
   end
 end
