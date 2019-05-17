@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # before_action :require_login, only: :secret
+
   def index
     @users = User.all
   end
@@ -24,4 +26,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
+
+  # def require_login
+  #   session[:current_user_email]
+  # end
 end
