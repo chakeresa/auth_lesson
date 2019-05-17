@@ -13,4 +13,8 @@ class SessionsController < ApplicationController
 
     redirect_to users_path
   end
+
+  def destroy
+    #code
+  end
 end
