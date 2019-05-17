@@ -14,7 +14,7 @@ RSpec.describe "As a visitor", type: :feature do
       fill_in :password, with: password
       click_button "Log Me In!"
 
-      click_link "Log Out"
+      click_button "Log Out"
 
       expect(current_path).to eq(users_path)
       expect(page).to have_link("Log In")
